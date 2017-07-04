@@ -1,0 +1,5 @@
+GET http://localhost:9999/bitcoinbalance
+
+###
+
+POST http://localhost:9999/bitcoinbalance
