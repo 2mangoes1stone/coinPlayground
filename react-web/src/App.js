@@ -1,20 +1,42 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
+import BitcoinWrapper from './components/BitcoinWrapper'
+
 import './App.css';
 
 class App extends Component {
+  state = {
+    error: null,
+    bitcoinBalance: null
+  }
+
+  fetchPrice = () => {
+    fetch('/bitcoinbalance')
+      .then(res => res.json())
+      .then(bitcoinBalance => {
+        this.setState({ bitcoinBalance })
+      })
+      .catch(error => {
+        this.setState({ error })
+      })
+  }   
+
   render() {
+    const { error, bitcoinBalance } = this.state
     return (
-      <div className="App">
-        <div className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h2>Welcome to React</h2>
-        </div>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
-      </div>
-    );
+      <main>
+      {
+        !!bitcoinBalance ? (
+          <BitcoinWrapper balance={ bitcoinBalance } onUpdate={ this.fetchPrice } />
+        ) : (
+          <p>loading..</p>
+        )
+      }
+        
+      </main>
+    )
+  }
+  componentDidMount() {
+    this.fetchPrice()
   }
 }
 
