@@ -1,5 +1,7 @@
+require('dotenv').config()
 const express = require('express')
 const bodyParser = require('body-parser')
+const walletBalanceRouter = require('./routes/walletBalance')
 
 const server = express()
 
@@ -8,6 +10,8 @@ server.use(bodyParser.json())
 server.use('/test', (req, res) => {
   {res.send({ test: true })}
 })
+
+server.use(walletBalanceRouter)
 
 const port = 9999
 
