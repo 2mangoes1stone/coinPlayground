@@ -1,12 +1,11 @@
 import React from 'react'
 
 export default function Bitcoin({
-  balance
+  bitBalance
 }) {
   return (
     <div>
-      <h2>{balance.final_balance} </h2>
-      {console.log(balance.final_balance)}
+      <h2>{ bitBalance.final_balance } </h2>
     </div>
   )
 }

@@ -1,15 +1,17 @@
 import React, { Component } from 'react';
 import BitcoinWrapper from './components/BitcoinWrapper'
+import EthereumWrapper from './components/EthereumWrapper'
 
 import './App.css';
 
 class App extends Component {
   state = {
     error: null,
-    bitcoinBalance: null
+    bitcoinBalance: null,
+    ethereumBalance: null
   }
 
-  fetchPrice = () => {
+  fetchBitcoinPrice = () => {
     fetch('/bitcoinbalance')
       .then(res => res.json())
       .then(bitcoinBalance => {
@@ -20,23 +22,45 @@ class App extends Component {
       })
   }   
 
+  fetchEthereumPrice = () => {
+    fetch('/ethereumbalance')
+      .then(res => res.json())
+      .then(ethereumBalance => {
+        this.setState({ ethereumBalance })
+      })
+      .catch(error => {
+        this.setState({ error })
+      })
+  }
+
   render() {
-    const { error, bitcoinBalance } = this.state
+    const { error, bitcoinBalance, ethereumBalance } = this.state
     return (
       <main>
-      {
-        !!bitcoinBalance ? (
-          <BitcoinWrapper balance={ bitcoinBalance } onUpdate={ this.fetchPrice } />
-        ) : (
-          <p>loading..</p>
-        )
-      }
-        
+        <div>
+          {
+            !!bitcoinBalance ? (
+              <BitcoinWrapper bitBalance={ bitcoinBalance } onUpdate={ this.fetchBitcoinPrice } />
+            ) : (
+              <p>loading..</p>
+            )
+          }
+        </div>
+        <div>
+          {
+            !!ethereumBalance ? (
+              <EthereumWrapper etherBalance={ ethereumBalance } onUpdate={ this.fetchEthereumPrice } />
+            ) : (
+              <p>loading..</p>
+            )
+          }
+        </div>  
       </main>
     )
   }
   componentDidMount() {
-    this.fetchPrice()
+    this.fetchBitcoinPrice()
+    this.fetchEthereumPrice()
   }
 }
 

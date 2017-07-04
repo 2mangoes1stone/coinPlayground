@@ -3,11 +3,11 @@ import Bitcoin from './Bitcoin'
 import Refresh from './Refresh'
 
 export default function BitcoinWrapper({
-  balance, onUpdate
+  bitBalance, onUpdate
 }) {
   return (
     <div>
-      <Bitcoin balance={ balance }  />
+      <Bitcoin bitBalance={ bitBalance }  />
       <Refresh onUpdate={ onUpdate } />
     </div>
   )
