@@ -58,7 +58,7 @@ class App extends Component {
       </main>
     )
   }
-  componentDidMount()
+  componentDidMount() {
     this.fetchBitcoinPrice()
     this.fetchEthereumPrice()
   }
