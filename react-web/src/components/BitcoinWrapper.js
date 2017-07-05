@@ -6,8 +6,8 @@ export default function BitcoinWrapper({
   bitBalance, onUpdate
 }) {
   return (
-    <div>
-      <Bitcoin bitBalance={ bitBalance }  />
+    <div className="flex-row">
+      <Bitcoin bitBalance={ bitBalance } />
       <Refresh onUpdate={ onUpdate } />
     </div>
   )

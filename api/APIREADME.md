@@ -31,4 +31,12 @@ yarn add cors
 
 ## ON BRANCH livecoinprices
 
+#### in react
+
+```
+yarn add font-awesome
+```
+
+- in ```App.js``` => ```var FontAwesome = require('react-fontawesome')```
+
 

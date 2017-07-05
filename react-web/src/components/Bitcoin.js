@@ -4,8 +4,8 @@ export default function Bitcoin({
   bitBalance
 }) {
   return (
-    <div>
-      <h2>Bitcoin Wallet Balance: { bitBalance.final_balance } </h2>
+    <div className="coincomponent">
+      <h2>Bitcoin: { bitBalance.final_balance } </h2>
     </div>
   )
 }
