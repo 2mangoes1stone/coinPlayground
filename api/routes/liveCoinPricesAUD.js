@@ -3,7 +3,9 @@ const fetch = require('node-fetch')
 const emitter = require('events')
 const router = express.Router()
 
+
 var audRate = 0
+// set new emmitter to listen for even
 var rateEmitter = new emitter()
 
 // get AUD convertion rate from api

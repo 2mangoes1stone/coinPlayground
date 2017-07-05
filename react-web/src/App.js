@@ -57,7 +57,6 @@ class App extends Component {
         this.setState({ error })
         setTimeout(this.fetchBitfinexBitcoinUsdPrice, 10000)
       })
-      // setInterval(this.fetchBitfinexBitcoinUsdPrice, 5000);
   }
 
   // get eth/usd price from bitfinex
@@ -74,7 +73,6 @@ class App extends Component {
         this.setState({ error })
         setTimeout(this.fetchBitfinexEthUsdPrice, 10000)
       })
-      // setInterval(this.fetchBitfinexBitcoinUsdPrice, 5000);
   }
 
   // get bitcoin/usd price from BTC-E
@@ -91,7 +89,6 @@ class App extends Component {
         this.setState({ error })
         setTimeout(this.fetchBtceBitcoinUsdPrice, 10000)
       })
-      // setInterval(this.fetchBtceBitcoinUsdPrice, 20000);
   }
 
   // get eth/usd price from BTC-E
@@ -108,7 +105,6 @@ class App extends Component {
         this.setState({ error })
         setTimeout(this.fetchBtceEthUsdPrice, 10000)
       })
-      // setInterval(this.fetchBtceEthUsdPrice, 20000);
   }
 
   // get bitcoin/usd price from bitstamp
@@ -125,7 +121,6 @@ class App extends Component {
         this.setState({ error })
         setTimeout(this.fetchBitstampBitcoinUsdPrice, 10000)
       })
-      // setInterval(this.fetchBitstampBitcoinUsdPrice, 5000);
   }
 
   render() {
