@@ -5,7 +5,7 @@ export default function Ethereum({
 }) {
   return (
     <div>
-      <h2>{ etherBalance.balance } </h2>
+      <h2>Ethereum Wallet Balance: { etherBalance.balance } </h2>
     </div>
   )
 }

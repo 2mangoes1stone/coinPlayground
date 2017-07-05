@@ -1,12 +1,14 @@
 import React from 'react'
 import BitfinexBitcoinUsd from './BitfinexBitcoinUsd'
+import BitfinexEthUsd from './BitfinexEthUsd'
 
 export default function BitfinexWrapper({
-  value
+  btcValue,ethValue
 }) {
   return (
     <div>
-      <BitfinexBitcoinUsd value={ value } />
+      <BitfinexBitcoinUsd btcValue={ btcValue } />
+      <BitfinexEthUsd ethValue={ ethValue } />
     </div>
   )
 }

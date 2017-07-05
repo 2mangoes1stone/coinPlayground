@@ -4,7 +4,6 @@ import EthereumWrapper from './components/EthereumWrapper'
 import BitfinexWrapper from './components/BitfinexWrapper'
 import BtceWrapper from './components/BtceWrapper'
 import BitstampWrapper from './components/BitstampWrapper'
-
 import './App.css';
 
 class App extends Component {
@@ -13,8 +12,10 @@ class App extends Component {
     bitcoinBalance: null,
     ethereumBalance: null,
     bitfinexBitcoinUsdPrice: null,
+    bitfinexEthUsdPrice: null,
     btceBitcoinUsdPrice: null,
-    bitstampBitcoinPrice: null
+    btceEthUsdPrice: null,
+    bitstampBitcoinPrice: null,
   }
 
   fetchBitcoinPrice = () => {
@@ -53,6 +54,20 @@ class App extends Component {
       // setInterval(this.fetchBitfinexBitcoinUsdPrice, 5000);
   }
 
+  fetchBitfinexEthUsdPrice = () => {
+    fetch('/livecoinprices/bitfinex/ethusd')
+      .then(res => res.json())
+      .then(bitfinexEthUsdPrice => {
+        this.setState({ bitfinexEthUsdPrice })
+        setTimeout(this.fetchBitfinexEthUsdPrice, 10000)
+      })
+      .catch(error => {
+        this.setState({ error })
+        setTimeout(this.fetchBitfinexEthUsdPrice, 10000)
+      })
+      // setInterval(this.fetchBitfinexBitcoinUsdPrice, 5000);
+  }
+
   fetchBtceBitcoinUsdPrice = () => {
     fetch('/livecoinprices/btc-e/btcusd')
       .then(res => res.json())
@@ -65,6 +80,20 @@ class App extends Component {
         setTimeout(this.fetchBtceBitcoinUsdPrice, 10000)
       })
       // setInterval(this.fetchBtceBitcoinUsdPrice, 20000);
+  }
+
+  fetchBtceEthUsdPrice = () => {
+    fetch('/livecoinprices/btc-e/ethusd')
+      .then(res => res.json())
+      .then(btceEthUsdPrice => {
+        this.setState({ btceEthUsdPrice })
+        setTimeout(this.fetchBtceEthUsdPrice, 10000)
+      })
+      .catch(error => {
+        this.setState({ error })
+        setTimeout(this.fetchBtceEthUsdPrice, 10000)
+      })
+      // setInterval(this.fetchBtceEthUsdPrice, 20000);
   }
 
   fetchBitstampBitcoinUsdPrice = () => {
@@ -81,11 +110,10 @@ class App extends Component {
       // setInterval(this.fetchBitstampBitcoinUsdPrice, 5000);
   }
 
-
   render() {
     const { 
       error, bitcoinBalance, ethereumBalance, bitfinexBitcoinUsdPrice,
-      btceBitcoinUsdPrice, bitstampBitcoinPrice
+      bitfinexEthUsdPrice, btceBitcoinUsdPrice, btceEthUsdPrice, bitstampBitcoinPrice
     } = this.state
     return (
       <main>
@@ -111,10 +139,10 @@ class App extends Component {
         </div>
         <div>
           {
-            !!bitfinexBitcoinUsdPrice ? (
+            !!bitfinexBitcoinUsdPrice && !!bitfinexEthUsdPrice ? (
               <BitfinexWrapper
-                value={ bitfinexBitcoinUsdPrice } 
-                onUpdate={ this.fetchBitfinexBitcoinUsdPrice }
+                btcValue={ bitfinexBitcoinUsdPrice }
+                ethValue={ bitfinexEthUsdPrice }
               />
             ) : (
               <p>loading..</p>
@@ -123,10 +151,10 @@ class App extends Component {
         </div>  
         <div>
           {
-            !!btceBitcoinUsdPrice ? (
+            !!btceBitcoinUsdPrice && !!btceEthUsdPrice ? (
               <BtceWrapper
-                value={ btceBitcoinUsdPrice } 
-                onUpdate={ this.fetchBtceBitcoinUsdPrice }
+                btcValue={ btceBitcoinUsdPrice }
+                ethValue={ btceEthUsdPrice }
               />
             ) : (
               <p>loading..</p>
@@ -137,8 +165,7 @@ class App extends Component {
           {
             !!bitstampBitcoinPrice ? (
               <BitstampWrapper
-                value={ bitstampBitcoinPrice } 
-                onUpdate={ this.fetchBitstampBitcoinUsdPrice }
+                btcValue={ bitstampBitcoinPrice } 
               />
             ) : (
               <p>loading..</p>
@@ -154,7 +181,9 @@ class App extends Component {
     this.fetchBitcoinPrice()
     this.fetchEthereumPrice()
     this.fetchBitfinexBitcoinUsdPrice()
+    this.fetchBitfinexEthUsdPrice()
     this.fetchBtceBitcoinUsdPrice()
+    this.fetchBtceEthUsdPrice()
     this.fetchBitstampBitcoinUsdPrice()
 
   }

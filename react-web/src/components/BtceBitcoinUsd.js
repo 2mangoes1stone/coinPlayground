@@ -1,11 +1,11 @@
 import React from 'react'
 
 export default function BtceBitcoinUsd({
-  value
+  btcValue
 }) {
   return (
     <div>
-      <h4>Btce_USD/BTC - { value.price }</h4>
+      <h4>Btce_BTC/USD - { btcValue.btcPrice }</h4>
     </div>
   )
 }

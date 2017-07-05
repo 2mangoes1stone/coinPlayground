@@ -1,11 +1,11 @@
 import React from 'react'
 
 export default function BitstampBitcoinUsd({
-  value
+  btcValue
 }) {
   return (
     <div>
-      <h4>Bitstamp_USD/BTC - { value.price }</h4>
+      <h4>Bitstamp_BTC/USD - { btcValue.btcPrice }</h4>
     </div>
   )
 }
