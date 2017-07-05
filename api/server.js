@@ -5,8 +5,6 @@ const bodyParser = require('body-parser')
 const walletBalanceRouter = require('./routes/walletBalance')
 const liveCoinPricesRouter = require('./routes/liveCoinPrices')
 
-r = require('./routes/walletBalance')
-
 const server = express()
 
 server.use(bodyParser.json())
