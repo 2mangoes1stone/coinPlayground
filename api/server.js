@@ -3,7 +3,8 @@ const express = require('express')
 const cors = require('cors')
 const bodyParser = require('body-parser')
 const walletBalanceRouter = require('./routes/walletBalance')
-const liveCoinPricesRouter = require('./routes/liveCoinPrices')
+const liveCoinPricesUSDRouter = require('./routes/liveCoinPricesUSD')
+const liveCoinPricesAUDRouter = require('./routes/liveCoinPricesAUD')
 
 const server = express()
 
@@ -14,7 +15,9 @@ server.use('/test', (req, res) => {
 })
 
 server.use(walletBalanceRouter)
-server.use(liveCoinPricesRouter)
+server.use(liveCoinPricesUSDRouter)
+server.use(liveCoinPricesAUDRouter)
+
 
 const port = 9999
 
