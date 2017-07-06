@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import BitfinexWrapper from './components/BitfinexWrapper'
 import BtceWrapper from './components/BtceWrapper'
 import BitstampWrapper from './components/BitstampWrapper'
-import WalletWrapper from './components/WalletWrapper'
+import WalletWrapper from './components/wallet/WalletWrapper'
 import './App.css';
 
 class App extends Component {
